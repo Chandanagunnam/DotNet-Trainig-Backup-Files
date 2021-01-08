@@ -1,0 +1,14 @@
+﻿@model List<PrjCRUD_EF.Models.Employee>
+@{
+    ViewBag.Title = "GetEmployeebyRegionNotNull";
+}
+
+<h2>GetEmployeebyRegionNotNull</h2>
+
+@foreach(var r in Model)
+{
+    <h2>@r.EmployeeID</h2>
+    <h2>@r.FirstName</h2>
+    <h2>@r.Region</h2>
+}
+

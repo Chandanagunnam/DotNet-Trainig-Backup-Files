@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="553429e1d3a04c9cb6cede800d3016b5" Name="Diagram1">
+        <EntityTypeShape EntityType="dbmovieModel.moviebooking" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmovieModel.tblcustomer" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmovieModel.tblmovie" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmovieModel.tblscreen" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmovieModel.tbltheatre" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="dbmovieModel.FK__moviebookin__cid__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmovieModel.FK__moviebookin__sid__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmovieModel.FK__screentbl__movie__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmovieModel.FK__screentbl__theat__75A278F5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

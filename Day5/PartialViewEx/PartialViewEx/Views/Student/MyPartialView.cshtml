@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PartialViewEx.Models.Student>
+    @using PartialViewEx.Models
+
+@if(Model!=null)
+{
+    <div>
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th>PsNo</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                     <tr>
+                        <td>
+                            @item.Psno
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Location
+                        </td>
+                     </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+

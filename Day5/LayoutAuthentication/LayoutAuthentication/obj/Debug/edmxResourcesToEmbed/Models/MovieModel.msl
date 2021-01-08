@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbmovieModelStoreContainer" CdmEntityContainer="dbmovieEntities1">
+    <EntitySetMapping Name="moviebookings">
+      <EntityTypeMapping TypeName="dbmovieModel.moviebooking">
+        <MappingFragment StoreEntitySet="moviebooking">
+          <ScalarProperty Name="bid" ColumnName="bid" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="sid" ColumnName="sid" />
+          <ScalarProperty Name="NoofSeats" ColumnName="NoofSeats" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblcustomers">
+      <EntityTypeMapping TypeName="dbmovieModel.tblcustomer">
+        <MappingFragment StoreEntitySet="tblcustomer">
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="cname" ColumnName="cname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmovies">
+      <EntityTypeMapping TypeName="dbmovieModel.tblmovie">
+        <MappingFragment StoreEntitySet="tblmovie">
+          <ScalarProperty Name="movieid" ColumnName="movieid" />
+          <ScalarProperty Name="moviename" ColumnName="moviename" />
+          <ScalarProperty Name="YearOfMovie" ColumnName="YearOfMovie" />
+          <ScalarProperty Name="releasedate" ColumnName="releasedate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblscreens">
+      <EntityTypeMapping TypeName="dbmovieModel.tblscreen">
+        <MappingFragment StoreEntitySet="tblscreen">
+          <ScalarProperty Name="sid" ColumnName="sid" />
+          <ScalarProperty Name="theatreid" ColumnName="theatreid" />
+          <ScalarProperty Name="movieid" ColumnName="movieid" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="Noofseats" ColumnName="Noofseats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltheatres">
+      <EntityTypeMapping TypeName="dbmovieModel.tbltheatre">
+        <MappingFragment StoreEntitySet="tbltheatre">
+          <ScalarProperty Name="theatreId" ColumnName="theatreId" />
+          <ScalarProperty Name="TheatreName" ColumnName="TheatreName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

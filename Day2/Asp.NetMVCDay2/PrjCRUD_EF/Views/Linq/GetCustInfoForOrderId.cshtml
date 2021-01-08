@@ -1,0 +1,12 @@
+﻿@model List<PrjCRUD_EF.Models.Customer>
+@{
+    ViewBag.Title = "GetCustInfoForOrderId";
+}
+
+<h2>GetCustInfoForOrderId</h2>
+@foreach(var item in Model)
+{
+    <li>@item.CustomerID</li>
+    <li>@item.CompanyName</li>
+}
+

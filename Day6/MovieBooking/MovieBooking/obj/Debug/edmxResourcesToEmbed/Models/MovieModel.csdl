@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbmovieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="moviebooking">
+    <Key>
+      <PropertyRef Name="bookingid" />
+    </Key>
+    <Property Name="bookingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sid" Type="Int32" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="noofseats" Type="Int32" Nullable="false" />
+    <Property Name="totalamount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblcustomer" Relationship="Self.FK__moviebookin__cid__41EDCAC5" FromRole="moviebooking" ToRole="tblcustomer" />
+    <NavigationProperty Name="tblscreen" Relationship="Self.FK__moviebookin__sid__40F9A68C" FromRole="moviebooking" ToRole="tblscreen" />
+  </EntityType>
+  <EntityType Name="tblcustomer">
+    <Key>
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="cid" Type="Int32" Nullable="false" />
+    <Property Name="cname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="moviebookings" Relationship="Self.FK__moviebookin__cid__41EDCAC5" FromRole="tblcustomer" ToRole="moviebooking" />
+  </EntityType>
+  <EntityType Name="tblmovie">
+    <Key>
+      <PropertyRef Name="movieid" />
+    </Key>
+    <Property Name="movieid" Type="Int32" Nullable="false" />
+    <Property Name="moviename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="YearOfMovie" Type="DateTime" Precision="0" />
+    <Property Name="releasedate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblscreens" Relationship="Self.FK__screentbl__movie__76969D2E" FromRole="tblmovie" ToRole="tblscreen" />
+  </EntityType>
+  <EntityType Name="tblscreen">
+    <Key>
+      <PropertyRef Name="sid" />
+    </Key>
+    <Property Name="sid" Type="Int32" Nullable="false" />
+    <Property Name="theatreid" Type="Int32" />
+    <Property Name="movieid" Type="Int32" />
+    <Property Name="amount" Type="Double" />
+    <Property Name="Noofseats" Type="Int32" />
+    <NavigationProperty Name="moviebookings" Relationship="Self.FK__moviebookin__sid__40F9A68C" FromRole="tblscreen" ToRole="moviebooking" />
+    <NavigationProperty Name="tblmovie" Relationship="Self.FK__screentbl__movie__76969D2E" FromRole="tblscreen" ToRole="tblmovie" />
+    <NavigationProperty Name="tbltheatre" Relationship="Self.FK__screentbl__theat__75A278F5" FromRole="tblscreen" ToRole="tbltheatre" />
+  </EntityType>
+  <EntityType Name="tbltheatre">
+    <Key>
+      <PropertyRef Name="theatreId" />
+    </Key>
+    <Property Name="theatreId" Type="Int32" Nullable="false" />
+    <Property Name="TheatreName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblscreens" Relationship="Self.FK__screentbl__theat__75A278F5" FromRole="tbltheatre" ToRole="tblscreen" />
+  </EntityType>
+  <Association Name="FK__moviebookin__cid__41EDCAC5">
+    <End Role="tblcustomer" Type="Self.tblcustomer" Multiplicity="0..1" />
+    <End Role="moviebooking" Type="Self.moviebooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcustomer">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="moviebooking">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__moviebookin__sid__40F9A68C">
+    <End Role="tblscreen" Type="Self.tblscreen" Multiplicity="0..1" />
+    <End Role="moviebooking" Type="Self.moviebooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblscreen">
+        <PropertyRef Name="sid" />
+      </Principal>
+      <Dependent Role="moviebooking">
+        <PropertyRef Name="sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__screentbl__movie__76969D2E">
+    <End Role="tblmovie" Type="Self.tblmovie" Multiplicity="0..1" />
+    <End Role="tblscreen" Type="Self.tblscreen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmovie">
+        <PropertyRef Name="movieid" />
+      </Principal>
+      <Dependent Role="tblscreen">
+        <PropertyRef Name="movieid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__screentbl__theat__75A278F5">
+    <End Role="tbltheatre" Type="Self.tbltheatre" Multiplicity="0..1" />
+    <End Role="tblscreen" Type="Self.tblscreen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltheatre">
+        <PropertyRef Name="theatreId" />
+      </Principal>
+      <Dependent Role="tblscreen">
+        <PropertyRef Name="theatreid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbmovieEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="moviebookings" EntityType="Self.moviebooking" />
+    <EntitySet Name="tblcustomers" EntityType="Self.tblcustomer" />
+    <EntitySet Name="tblmovies" EntityType="Self.tblmovie" />
+    <EntitySet Name="tblscreens" EntityType="Self.tblscreen" />
+    <EntitySet Name="tbltheatres" EntityType="Self.tbltheatre" />
+    <AssociationSet Name="FK__moviebookin__cid__41EDCAC5" Association="Self.FK__moviebookin__cid__41EDCAC5">
+      <End Role="tblcustomer" EntitySet="tblcustomers" />
+      <End Role="moviebooking" EntitySet="moviebookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__moviebookin__sid__40F9A68C" Association="Self.FK__moviebookin__sid__40F9A68C">
+      <End Role="tblscreen" EntitySet="tblscreens" />
+      <End Role="moviebooking" EntitySet="moviebookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__screentbl__movie__76969D2E" Association="Self.FK__screentbl__movie__76969D2E">
+      <End Role="tblmovie" EntitySet="tblmovies" />
+      <End Role="tblscreen" EntitySet="tblscreens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__screentbl__theat__75A278F5" Association="Self.FK__screentbl__theat__75A278F5">
+      <End Role="tbltheatre" EntitySet="tbltheatres" />
+      <End Role="tblscreen" EntitySet="tblscreens" />
+    </AssociationSet>
+    <FunctionImport Name="proc_InsertTheatreValues">
+      <Parameter Name="tid" Mode="In" Type="Int32" />
+      <Parameter Name="tname" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

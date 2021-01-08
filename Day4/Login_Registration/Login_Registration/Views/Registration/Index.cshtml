@@ -1,0 +1,56 @@
+﻿@model Login_Registration.Models.Registration
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <br />
+
+    @Html.Label("UserName")
+    @Html.TextBox("Name")
+    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+    <br />
+    @Html.Label("UserPhone")
+    @Html.TextBox("Phone")
+    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+    <br />
+
+    @Html.Label("UserEmail")
+    @Html.TextBox("Email")
+    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+    <br />
+
+    @Html.Label("UserPassword")
+    @Html.Password("Password")
+    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+    <br />
+    @Html.Label("ConfirmPassword")
+    @Html.Password("ConfirmPassword")
+    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+    <br />
+
+
+    @Html.Label("M")
+    @Html.RadioButton("M", new { value = "Male" })
+    @Html.Label("F")
+    @Html.RadioButton("F", new { value = "Female" })
+    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+
+
+    <br />
+    @Html.Label("Country")
+    @Html.DropDownList("Country", new SelectList(Enum.GetValues(typeof(Login_Registration.Models.Country))), "Select Country")
+
+    <input type="submit" value="Submit" />
+
+
+
+
+}  

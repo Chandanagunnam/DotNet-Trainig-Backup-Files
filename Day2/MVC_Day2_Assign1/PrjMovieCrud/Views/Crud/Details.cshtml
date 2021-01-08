@@ -1,0 +1,42 @@
+﻿@model PrjMovieCrud.Models.tblmovie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblmovie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.moviename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moviename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearOfMovie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearOfMovie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.releasedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.releasedate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.movieid }) |
+    @Html.ActionLink("Back to List", "GetAllDetails")
+</p>

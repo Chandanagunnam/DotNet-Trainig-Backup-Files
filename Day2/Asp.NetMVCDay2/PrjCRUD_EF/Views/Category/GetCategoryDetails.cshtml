@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PrjCRUD_EF.Models.Category>
+
+@{
+    ViewBag.Title = "GetCategoryDetails";
+}
+
+<h2>GetCategoryDetails</h2>
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>CategoryId</th>
+                <th>CategoryName</th>
+                <th>CategoryDescription</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model) { 
+            <tr>
+                <td>@c.CategoryID</td>
+                <td>@c.CategoryName</td>
+                <td>@c.Description</td>
+
+            </tr>}
+
+                
+        </tbody>
+    </table>
+

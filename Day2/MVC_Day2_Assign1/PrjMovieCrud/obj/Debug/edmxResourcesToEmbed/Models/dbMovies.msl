@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbmovieModelStoreContainer" CdmEntityContainer="dbmovieEntities">
+    <EntitySetMapping Name="samples">
+      <EntityTypeMapping TypeName="dbmovieModel.sample">
+        <MappingFragment StoreEntitySet="sample">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="samplename" ColumnName="samplename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmovies">
+      <EntityTypeMapping TypeName="dbmovieModel.tblmovie">
+        <MappingFragment StoreEntitySet="tblmovie">
+          <ScalarProperty Name="movieid" ColumnName="movieid" />
+          <ScalarProperty Name="moviename" ColumnName="moviename" />
+          <ScalarProperty Name="YearOfMovie" ColumnName="YearOfMovie" />
+          <ScalarProperty Name="releasedate" ColumnName="releasedate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltheatres">
+      <EntityTypeMapping TypeName="dbmovieModel.tbltheatre">
+        <MappingFragment StoreEntitySet="tbltheatre">
+          <ScalarProperty Name="theatreId" ColumnName="theatreId" />
+          <ScalarProperty Name="TheatreName" ColumnName="TheatreName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="proc_InsertTheatreValues" FunctionName="dbmovieModel.Store.proc_InsertTheatreValues" />
+  </EntityContainerMapping>
+</Mapping>

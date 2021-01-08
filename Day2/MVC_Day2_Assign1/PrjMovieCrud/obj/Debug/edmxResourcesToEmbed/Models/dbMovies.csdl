@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbmovieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sample">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="samplename" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblmovie">
+    <Key>
+      <PropertyRef Name="movieid" />
+    </Key>
+    <Property Name="movieid" Type="Int32" Nullable="false" />
+    <Property Name="moviename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="YearOfMovie" Type="DateTime" Precision="0" />
+    <Property Name="releasedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbltheatre">
+    <Key>
+      <PropertyRef Name="theatreId" />
+    </Key>
+    <Property Name="theatreId" Type="Int32" Nullable="false" />
+    <Property Name="TheatreName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="dbmovieEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="samples" EntityType="Self.sample" />
+    <EntitySet Name="tblmovies" EntityType="Self.tblmovie" />
+    <EntitySet Name="tbltheatres" EntityType="Self.tbltheatre" />
+    <FunctionImport Name="proc_InsertTheatreValues">
+      <Parameter Name="tid" Mode="In" Type="Int32" />
+      <Parameter Name="tname" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "ODPrice";
+}
+
+<h2>ODPrice</h2>
+@foreach (var item in Model)
+{
+    <h5>
+       OrderId: @item.OrderID
+    </h5>
+    <h6>
+       UnitPrice: @item.UnitPrice
+    </h6>
+ 
+}
