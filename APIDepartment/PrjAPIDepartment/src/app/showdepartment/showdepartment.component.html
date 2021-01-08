@@ -1,0 +1,46 @@
+<p>showdepartment works!</p>
+
+
+
+Department deleted!!!
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>DepartmentName</th>
+        <th>Location</th>
+        <th>Event</th>
+    </tr>
+    <tr *ngFor ="let d of departments;let i = index">
+        <td>{{d.deptid}}</td>
+        <td>{{d.Dname}}</td>
+        <td>{{d.Location}}</td>
+
+        <td><button (click)="deleteDept(d.deptid)">Delete</button></td>
+    </tr>
+</table>
+
+<form #form = "ngForm">
+    <div class="form-group">
+        <label> DepartId : </label>
+        <input type="text" class="form-control" id="deptid" name="deptid"
+        required [(ngModel)] ="departments.deptid" #name=ngModel>
+    </div> 
+
+    <div class="form-group">
+        <label>DepartmentName:</label>
+        <input type="text" class="form-control" id="Dname"
+        name="Dname" required [(ngModel)] ="departments.Dname" #name=ngModel>
+    </div>
+
+    <div class="form-group">
+        <label>Location</label>
+        <input type="text" class="form-control" id="Location"
+        name="Location" required [(ngModel)] ="departments.Location" #name=ngModel>
+    </div>
+
+
+    <button (click) ="insertDept()">Add Department</button><br/>
+   <!---<button (click) ="updateDept(form)">Update</button><br/>-->
+
+</form>

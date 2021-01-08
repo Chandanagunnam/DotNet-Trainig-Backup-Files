@@ -1,0 +1,32 @@
+<p>assignmentreactive works!</p>
+<div class="container">
+    <form [formGroup]="employee" (ngSubmit)="onSubmit()">
+        <label for="username">User Name</label><br/>
+        <input type="text" formControlName="username" id="username"><br/>
+        <div *ngIf="employee.get('username').errors && (employee.get('username').touched ||employee.get('username').dirty)">
+            <small class="text-danger" *ngIf="employee.get('username').errors.required">
+                Full Name is required for Registration.
+            </small> 
+            <div *ngIf="employee.get('username').errors.minlength ||employee.get('username').errors.maxlength">
+                <small class="text-danger">User Name should be minimum of 3 characters and maximum of 12 characters</small>
+            </div>
+        </div>
+        ---------
+        <label for="age">Age</label><br/>
+        <input type="number" class="form-control" formControlName="age" id="age"><br/>
+        <div class ="text-danger" *ngIf = "employee.get('age').dirty && employee.get('age').errors && employee.get('age').errors.ageRange">
+            Age b/n 18 and 45 years
+        </div>
+        <label for="email">Email</label><br/>
+        <input type="text" formControlName="email" id="email"><br/> <br/>
+        <div *ngIf="employee.get('email').errors && (employee.get('email').touched ||employee.get('email').dirty)">
+            <div *ngIf="employee.get('email').errors.required">
+                <small class="text-danger">email is required for Registration</small>
+            </div>
+            <div *ngIf="employee.get('email').errors.email">
+                <small class="text-danger">Please enter a valid Email</small>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!employee.valid">Register</button>
+    </form>
+</div>

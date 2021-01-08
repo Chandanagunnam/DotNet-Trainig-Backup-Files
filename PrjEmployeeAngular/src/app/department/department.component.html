@@ -1,0 +1,12 @@
+<p>department works!</p>
+<p>------------------------------------------Get Emp of dept-----------------</p>
+<form>
+    Enter DeptName<br/>
+    <input type ="text" name ="Dname" #Dname><br/>
+    <button (click)="getEmpByName(Dname.value)">GetEmployees</button><br/>
+
+</form>
+<ul *ngFor ="let e of Employee">
+<li>{{e.Name}}</li>
+<li>{{e.Age}}</li>
+</ul>

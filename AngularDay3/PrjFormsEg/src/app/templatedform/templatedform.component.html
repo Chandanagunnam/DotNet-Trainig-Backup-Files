@@ -1,0 +1,79 @@
+0<p>templatedform works!</p>
+
+<div class="container fluid">
+    <form #customerform="ngForm" (ngSubmit)="onRegister(customerform)" novalidate>
+        <p>
+            <label for="cname">Enter Name</label>
+    <input type ="text" id ="cname" name ="cname" [(ngModel)]=cust.cname #cname="ngModel" required minlength="5">
+Touched:{{cname.touched}}
+Dirty:{{cname.dirty}}        
+</p>
+<div *ngIf ="!cname?.valid && (cname?.dirty || cname?.touched)" class ="error">
+    <div *ngIf ="cname.errors.required">
+        <small class="text-danger">Customer name is required</small>
+
+    </div>
+    <div *ngIf ="cname.errors.minlength">
+        <small class="text-danger">Customer name should of minimum length {{cname.errors.minlength?.requiredLength}}</small>
+
+    </div>
+
+</div>
+
+        <p>
+            <label for="age">Enter Age</label>
+    <input type ="number" id ="cage" name ="age" [(ngModel)] = cust.age #age="ngModel" required>
+        </p>
+        <div *ngIf ="!age?.valid && (age?.dirty || age?.touched)" class ="error">
+            <div *ngIf ="age.errors.required">
+                <small class="text-danger">Age is required</small>
+            </div>
+
+        </div>
+        <p>
+            <label for="phno">Enter Phoneno.</label>
+    <input type ="text" id ="cphn" name ="phno" [(ngModel)] = cust.phno #phno= "ngModel" required pattern ="^\d{3}-\d{3}-\d{4}$">
+        </p>
+        <div *ngIf ="!phno?.valid && (phno?.dirty || phno?.touched)" class="error">
+            <div *ngIf ="phno.errors.required">
+                <small class="text-danger">mobile num is required</small>
+            </div>
+            <div *ngIf ="phno.errors.pattern">
+                <small class="text-danger"> Use Pattern: 000-000-0000</small>
+            </div>
+        </div>
+        <p>
+            <label for="mailid">Enter E-mailId</label>
+    <input type ="text" id ="cmail" name ="mailid" [(ngModel)] = cust.mailid  #mailid ="ngModel" required email>
+    <div *ngIf ="!mailid?.valid && (mailid?.dirty || mailid?.touched)" class ="error">
+        <div *ngIf ="mailid.errors.required">
+            <small class="text-danger">Mailid is required</small>
+        </div>
+        <div *ngIf ="mailid.errors.email">
+            <small class ="text-danger">Invalid email add</small>
+        </div>
+    </div>
+        
+        <p>
+            <label for="domain">Select Your Domain</label>
+    <select name ="domain" id ="cdomain">
+        <option selected>Choose</option>
+        <option *ngFor="let d of domain">{{d}}</option>
+        </select>
+        </p>
+        <p>
+            <label for ="gender">Select Gender</label>
+            <input type="radio" name ="gender" value="male">Male
+            <input type="radio" name ="gender" value="Female">Female
+
+        </p>
+        <p>
+            <label for ="newsletter">Subscribe for newsletter</label>
+            <input type ="checkbox" name ="newsletter" id ="cnletter">
+        </p>
+    <p>
+        <button class = "btn btn-primary" type ="submit" [disabled]="!customerform.valid">Submit</button>
+    </p>
+    {{customerform.valid}}
+    </form>
+</div>

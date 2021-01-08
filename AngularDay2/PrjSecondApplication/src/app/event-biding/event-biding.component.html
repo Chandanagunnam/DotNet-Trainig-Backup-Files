@@ -1,0 +1,28 @@
+<p>event-biding works!</p>
+<h4>Eg1 Click me to see the message</h4>
+<button class ="btn btn-primary" (click) = welcomeMsg()>Click Me</button>
+<h2>Eg2</h2>
+<h4>Template reference variable:u can refer any dom element(html tag)inside html file 
+    symbol:# refers template refernce variabble
+
+</h4>
+<input type ="text" #uname>
+<button class ="btn btn-success" (click)=displayfullname(uname)>Display Full Name</button>
+{{fname}}
+<h4>Template reference variable:u can refer any dom element(html tag)inside html file 
+    symbol:# refers template refernce variabble
+
+</h4>
+<h3>Eg3</h3>
+<input type="text" #salin>
+<button class ="btn btn-success" (click)=incrementsalary(salin)>salaryincrement</button>
+<p>FinalSalery:<span class ="sal">{{finalsalary}}</span></p>
+
+<h3>Eg3 thumbs up and down</h3>
+<span class = "glyphicon glyphicon-thumbs-up" (click)="increaselikes()"></span>
+<p> Number of LIKES : {{like}}</p>
+<span class = "glyphicon glyphicon-thumbs-down" (click)="increasedislikes()"></span>
+<p> Number of DISLIKES : {{dislike}}</p>
+
+<h3>Eg4 Filling the Star on click eg</h3>
+<span [class] = clsName (click)="Starfill()"></span>
