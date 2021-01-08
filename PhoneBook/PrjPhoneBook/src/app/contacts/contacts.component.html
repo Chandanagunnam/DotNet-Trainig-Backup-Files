@@ -1,0 +1,112 @@
+<div class ="container">
+   <h2><glyphicon class="glyphicon glyphicon-book">PhoneBook</glyphicon></h2>
+    <div class = "jumbotron">
+        <form #phonebookform ="ngForm" (ngSubmit)="onEntering(phonebookform)" novalidate>
+            FirstName<br/><input  type ="text" id ="fname" name="FirstName" [(ngModel)]="getcontactinfo.FirstName" #FirstName="ngModel" required minlength="4"><br/><br/>
+            <div *ngIf ="!FirstName?.valid && (FirstName?.dirty || FirstName?.touched)" class ="error">
+              <div *ngIf ="FirstName.errors.required">
+                  <small class="text-danger">FirstName is required</small>
+          
+              </div>
+              <div *ngIf ="FirstName.errors.minlength">
+                  <small class="text-danger">Firstname should of minimum length {{FirstName.errors.minlength?.requiredLength}}</small>
+          
+              </div>
+          
+          </div>
+            LastName<br/> <input type ="text" id ="lname" name="LastName" [(ngModel)]="getcontactinfo.LastName"><br/><br/>
+            PhoneNumber<br/> <input type ="text" id ="pno" name="PhoneNumber" [(ngModel)]="getcontactinfo.PhoneNumber" #PhoneNumber="ngModel" required pattern ="^\d{3}-\d{3}-\d{4}$"><br/><br/>
+            <div *ngIf ="!PhoneNumber?.valid && (PhoneNumber?.dirty || PhoneNumber?.touched)" class ="error">
+              <div *ngIf ="PhoneNumber.errors.required">
+                  <small class="text-danger">Phone Number is required</small>
+          
+              </div>
+              <div *ngIf ="PhoneNumber.errors.pattern">
+                  <small class="text-danger">PhoneNumber should of pattern 000-000-0000</small>
+          
+              </div>
+          
+          </div>
+                <div class="column">
+                    <button class ="btn btn-success form-control btn-block" type ="submit" (click) ="addcontact()" [disabled]="!phonebookform.valid">AddContact</button>
+            <button class ="btn btn-success form-control btn-block" type="submit" (click) ="updatecontact()" [disabled]="!phonebookform.valid">Update</button>
+                </div>
+            
+           
+        </form>
+    </div>
+    <hr>
+    <h3>Contacts</h3>
+    <!--<div>
+        <button class="btn btn-primary" (click)="open(content)">Add New Contact</button>
+    </div>-->
+    <div>
+        <b>Search: </b> <input type="text" placeholder="Enter Name" [(ngModel)]="searchText"><br/>
+        <table class ="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>PhoneNumber</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor ="let c of contactlist| contactfilterpipe : searchText">
+                    <td>{{c.FirstName}}{{c.LastName}}</td>
+                     <td>{{c.PhoneNumber}}</td>
+                <td> <glyphicon  class="glyphicon glyphicon-trash" (click)="deletecontact(c.FirstName)"></glyphicon></td>
+                <td> <glyphicon  class="glyphicon glyphicon-edit" (click)="editcontact(c.FirstName)"></glyphicon></td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</div>
+
+<!--<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">+Add Contact</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <form #phonebookform ="ngForm" (ngSubmit)="onEntering(phonebookform)" novalidate>
+            FirstName<br/><input  type ="text" id ="fname" name="FirstName" [(ngModel)]="getcontactinfo.FirstName" #FirstName="ngModel" required minlength="4"><br/><br/>
+            <div *ngIf ="!FirstName?.valid && (FirstName?.dirty || FirstName?.touched)" class ="error">
+              <div *ngIf ="FirstName.errors.required">
+                  <small class="text-danger">FirstName is required</small>
+          
+              </div>
+              <div *ngIf ="FirstName.errors.minlength">
+                  <small class="text-danger">Firstname should of minimum length {{FirstName.errors.minlength?.requiredLength}}</small>
+          
+              </div>
+          
+          </div>
+            LastName<br/> <input type ="text" id ="lname" name="LastName" [(ngModel)]="getcontactinfo.LastName"><br/><br/>
+            PhoneNumber<br/> <input type ="text" id ="pno" name="PhoneNumber" [(ngModel)]="getcontactinfo.PhoneNumber" #PhoneNumber="ngModel" required pattern ="^\d{3}-\d{3}-\d{4}$"><br/><br/>
+            <div *ngIf ="!PhoneNumber?.valid && (PhoneNumber?.dirty || PhoneNumber?.touched)" class ="error">
+              <div *ngIf ="PhoneNumber.errors.required">
+                  <small class="text-danger">Phone Number is required</small>
+          
+              </div>
+              <div *ngIf ="PhoneNumber.errors.pattern">
+                  <small class="text-danger">PhoneNumber should of pattern 000-000-0000</small>
+          
+              </div>
+          
+          </div>
+               
+           <div>
+            <button data-dismiss="modal" class ="btn btn-success form-control btn-block" type ="submit" (click) ="addcontact()" [disabled]="!phonebookform.valid">AddContact</button>
+            <button class ="btn btn-success form-control btn-block" type="submit" (click) ="updatecontact()" [disabled]="!phonebookform.valid">Update</button>
+
+           </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button class ="btn btn-success form-control btn-block" type ="submit" (click) ="modal.close('Save')">Save</button>
+
+    </div>
+</ng-template>-->

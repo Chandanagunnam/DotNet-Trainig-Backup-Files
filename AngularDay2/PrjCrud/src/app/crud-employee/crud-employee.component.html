@@ -1,0 +1,33 @@
+<p>crud-employee works!</p>
+<div class="container">
+    <form>
+        EmployeeId<input type ="number" name ="eid" [(ngModel)] ="getempinfo.eid"><br/>
+        EmployeeName<input type ="text" name ="ename" [(ngModel)] ="getempinfo.ename"><br/>
+        EmployeeCity<input type ="text" name ="city" [(ngModel)] ="getempinfo.city"><br/>
+        <button class="btn btn-success" type ="submit" (click) ="Addemp()">Add</button>
+        <button class="btn btn-success"type="submit" (click)="Updateemp()">Update</button>
+    </form>
+
+</div>
+<div class="Msg">{{Message}}</div><br/>
+<div class="container">
+    <table class="table table-hover">
+            <thead>
+            <tr>
+                   <th>Id</th>
+                   <th>Name</th>
+               <th>City</th>
+           </tr>
+
+            </thead>
+     <tbody *ngFor ="let e of EmployeeDetails">
+            <tr>
+               <td>{{e.eid}}</td>
+               <td>{{e.ename}}</td>
+               <td>{{e.city}}</td>
+               <td><button class="btn btn-danger" (click)="Deleteemp(e.eid)">Delete</button></td>
+               <td><button class="btn btn-info" (click)="Editemp(e.eid)">Edit</button></td>
+            </tr>
+    </tbody>
+    </table>
+</div>

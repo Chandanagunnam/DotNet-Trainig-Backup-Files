@@ -1,0 +1,56 @@
+<p>employeearray works!</p>
+<h3>ngFor Eg</h3>
+<table class= "table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Department</th>
+
+        </tr>
+    </thead>
+    <tbody *ngFor = "let emp of people;let i = index">
+        <tr>
+            <td>{{i}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.age}}</td>
+            <td>{{emp.dept}}</td>
+        </tr>
+    </tbody>
+</table>
+<h3>ngIf Eg</h3>
+<h3>Display Employ age <25</h3>
+<div *ngFor = "let e of people">
+    <li *ngIf ="e.age<25 && e.dept === 'HR'" >{{e.name}}   {{e.age}}</li>
+     <li>{{e.dept}}</li>   <!--ifcondition is not applied here-->
+</div> 
+<br>
+<div *ngFor = "let e of people">
+<div class ="det" *ngIf ="e.age < 25 && e.dept === 'HR'">
+    <li>{{e.name}}  {{e.age}}</li>
+    <li>{{e.dept}}</li>
+</div>
+</div>
+<hr>
+<hr>
+<h2>Swith case Example</h2>
+<div *ngFor ="let p of people" [ngSwitch] = "p.dept">
+    <li *ngSwitchCase ="'HR'" class="text-success">
+        {{p.name}}   {{p.dept}}
+    </li>
+    <li *ngSwitchCase ="'Admin'" class="text-danger">
+        {{p.name}}   {{p.dept}}
+    </li>
+    <li *ngSwitchDefault class="text-uppercase">
+        {{p.name}} , {{p.dept}}
+    </li>
+</div>
+<h2> Attribute directive ngclass and ngstyle</h2>
+<ul *ngFor ="let emp of people">
+    <li [ngClass] ="{'text-success':emp.dept === 'HR','text-info':emp.dept === 'Finance'}">{{emp.name}}{{emp.dept}}</li>
+</ul>
+<h3>NGSTYLE</h3>
+<div *ngFor ="let p of people">
+    <p [ngStyle]="{'color': p.dept === 'Admin' ? 'violet' : 'orange'}">{{p.dept}}</p>
+</div>

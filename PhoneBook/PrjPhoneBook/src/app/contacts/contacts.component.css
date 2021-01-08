@@ -1,0 +1,9 @@
+input[type=text]{
+    width:100%;
+    display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+}
+button{
+    color:black;
+}
